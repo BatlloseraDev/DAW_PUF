@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="04dfaed9-7075-4209-b09c-a004c3b140ae" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/DjangoRadio.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/DjangoRadio.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RadioVirgenDeGracia2026/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/RadioVirgenDeGracia2026/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RadioVirgenDeGracia2026/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/RadioVirgenDeGracia2026/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/radioapp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/radioapp/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/radioapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/radioapp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/radioapp/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/radioapp/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/radioapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/radioapp/views.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="34fKIeBjsRzrdUBiWs2Apj5PUjo" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/DAW2/Framework/2DawVictorFramework/DjangoRadio/RadioVirgenDeGracia2026"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-ce6832f46686-7b97d883f26b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.25557.178" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="04dfaed9-7075-4209-b09c-a004c3b140ae" name="Changes" comment="" />
+      <created>1761599108196</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1761599108196</updated>
+    </task>
+    <servers />
+  </component>
+</project>
