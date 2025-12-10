@@ -36,5 +36,13 @@ public interface TaskRepository extends JpaRepository<Task, Long>{
     @Query(value = "SELECT * FROM Task t WHERE t.status = :status", nativeQuery = true)
     List<Task> listTasksTaskStatus(@Param("status") TaskStatus status);
 
+    //consulta nativa que busque tareas que busque por estimación de horas y horas invertidas
+    @Query(value = "SELECT * FROM task WHERE estimated_hours = :estimatedHours AND spent_hours = :spentHours", nativeQuery = true)
+    List<Task> listTasksByEstimatedHoursAndSpentHours(@Param("estimatedHours") Integer estimatedHours, @Param("spentHours") Integer spentHours);
+
+
+    //Realizar una query nativa que reciba una lista de ids de tareas y busque mediante “IN” esa lista de tareas.
+    @Query(value = "SELECT * FROM task WHERE id IN :taskIds", nativeQuery = true)
+    List<Task> listTasksByTaskIds(@Param("taskIds") List<Long> taskIds);
 
 }
