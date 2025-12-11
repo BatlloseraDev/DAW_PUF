@@ -1,7 +1,9 @@
 package com.cifp.daw.controller;
 
+import com.cifp.daw.dto.TagDTO;
 import com.cifp.daw.dto.TaskDTO;
 import com.cifp.daw.service.TaskService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -81,5 +83,48 @@ public class TaskController {
         List<TaskDTO> tasks = taskService.getTasksByProgrammer(programmerId);
         return ResponseEntity.ok(tasks);
     }
+
+    //Obtener tareas por id de sprint y aplicar un desvio de duracion por parametro ademas estas tareas se le asignará un tag nuevo llamado problemas
+    @PutMapping("/desviation/{sprintId}/{percentage}")
+    public ResponseEntity<List<TaskDTO>> getTasksDelayed(@PathVariable Long sprintId, @PathVariable Integer percentage){
+        List<TaskDTO> tasks = taskService.getTasksBySprintId(sprintId);
+        TagDTO tagProblem = new TagDTO(null, "problemas");
+
+        for (TaskDTO task : tasks) {
+            task.addTag(tagProblem);
+            task.setEstimatedHours(task.getEstimatedHours() + (task.getEstimatedHours() * percentage/100));
+            //taskService.updateTask(task.getId(), task);
+        }
+        //servicio de actualización masiva
+
+
+        return ResponseEntity.ok(tasks);
+    }
+    // Endpoint para Actividad 3: /tasks/search/hours?estimated=10&spent=5
+    @GetMapping("/search/hours")
+    public ResponseEntity<List<TaskDTO>> getTasksByEstimatedHoursAndSpentHours(
+            @RequestParam Integer estimated,
+            @RequestParam Integer spent
+    ) {
+        List<TaskDTO> tasks = taskService.getTasksByEstimatedHoursAndSpentHours(estimated, spent);
+        if(tasks.isEmpty()){
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(tasks);
+        }
+    }
+
+
+    // Endpoint para Ejercicio Extra: /tasks/search/ids?ids=1,2,5,10
+    @GetMapping("/search/ids")
+    public ResponseEntity<List<TaskDTO>> getTasksByTaskIds(@RequestParam List<Long> taskIds) {
+        List<TaskDTO> tasks = taskService.getTasksByTaskIds(taskIds);
+
+        if(tasks.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(tasks);
+    }
+
 
 }

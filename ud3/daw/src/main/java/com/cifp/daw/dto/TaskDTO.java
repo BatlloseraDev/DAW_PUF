@@ -82,4 +82,13 @@ public class TaskDTO {
 
     public Set<TagDTO> getTags() { return tags; }
     public void setTags(Set<TagDTO> tags) { this.tags = tags; }
+    //añadir tag
+    public void addTag(TagDTO tag) {
+        this.tags.add(tag);
+    }
+    //quitar tag
+    public void removeTag(TagDTO tag) {
+        this.tags.remove(tag);
+    }
+
 }

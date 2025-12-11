@@ -74,4 +74,18 @@ public class SprintController {
         sprintService.deleteSprint(id);
         return ResponseEntity.noContent().build();
     }
+
+    // Endpoint: /sprints/search?goal=texto&ids=1,2,3
+    @GetMapping("/search")
+    public ResponseEntity<List<SprintDTO>> searchByGoalAndIds(
+            @RequestParam String goal,
+            @RequestParam List<Long> ids) {
+
+        List<SprintDTO> sprints = sprintService.searchSprintsByGoalAndIds(goal, ids);
+
+        if (sprints.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(sprints);
+    }
 }

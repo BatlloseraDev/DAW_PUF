@@ -177,6 +177,49 @@ public class TaskService {
     }
 
 
+    //retrasar tareas (aumentar estimated_hours) por sprint y añadir tag "problemas"
+    @Transactional
+    public List<TaskDTO> delayTaskBySprint(Long sprintId, Integer percentage) {
+        List<Task> tasks = taskRepository.findBySprintId(sprintId);
+
+        Tag problemTag = tagRepository.findByName("PROBLEMAS").orElseGet(()->tagRepository.save(new Tag("PROBLEMAS")));
+
+        for (Task task : tasks) {
+            boolean hasProblems = task.getTags().stream().anyMatch(tag -> tag.getName().equalsIgnoreCase(problemTag.getName()));
+
+            //no se debe actualizar una tarea que ya tenga esa etiqueta
+            if (!hasProblems) {
+                if(null !=task.getEstimatedHours()){
+                    int currentHours = task.getEstimatedHours();
+                    int increase = (currentHours*percentage)/100;
+                    task.setEstimatedHours(currentHours + increase);
+                }
+                task.getTags().add(problemTag);
+            }
+        }
+        tasks = taskRepository.saveAll(tasks);
+
+        return tasks.stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.toList());
+    }
+
+    //Actividad 3: Buscar por estimación de horas y horas invertidas
+    public List<TaskDTO> getTasksByEstimatedHoursAndSpentHours(Integer estimatedHours, Integer spentHours) {
+        List<Task> tasks = taskRepository.listTasksByEstimatedHoursAndSpentHours(estimatedHours, spentHours);
+        return tasks.stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.toList());
+    }
+
+    //Ejercicio extra: Buscar por lista de ids
+    public List<TaskDTO> getTasksByTaskIds(List<Long> taskIds) {
+        List<Task> tasks = taskRepository.listTasksByTaskIds(taskIds);
+        return tasks.stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.toList());
+    }
+
 
     //metodos auxiliares
     private TaskDTO mapToDTO(Task task) {
@@ -241,5 +284,7 @@ public class TaskService {
         }
         return tags;
     }
+
+
 
 }

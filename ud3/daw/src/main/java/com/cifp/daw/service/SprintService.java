@@ -118,6 +118,15 @@ public class SprintService {
     public void deleteSprint(Long id) {
         sprintRepository.deleteById(id);
     }
+    // ACTIVIDAD 4: Buscar Sprints por texto en el objetivo (goal) y lista de IDs
+    public List<SprintDTO> searchSprintsByGoalAndIds(String goal, List<Long> ids) {
+        List<Sprint> sprints = sprintRepository.findByGoalContainingAndIdIn(goal, ids);
+
+
+        return sprints.stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.toList());
+    }
 
 
 
