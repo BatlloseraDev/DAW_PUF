@@ -1,0 +1,80 @@
+<div class="barraBusqueda">
+  <div class="acciones">
+    <table>
+      <tr>
+        <td><button routerLink="/buscar" id="buscarAnillo">Buscar Anillo</button></td>
+        <td><button routerLink="/crear-anillo" id="crearAnillo">Crear Anillo</button></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="formulario">
+  <form [formGroup]="formulario" (ngSubmit)="enviar()">
+    <div>
+      <label for="nombre">Nombre</label>
+      <input pInputText id="nombre" type="text" formControlName="nombre">
+      @if (formulario.get('nombre')?.invalid && formulario.get('nombre')?.touched) {
+      <small>El nombre es obligatorio y debe tener al menos 3 caracteres</small>
+      }
+    </div>
+    <div>
+      <label for="portador">Portador</label>
+      <input pInputText id="portador" type="text" formControlName="portador">
+      @if (formulario.get('portador')?.invalid && formulario.get('portador')?.touched) {
+      <small>El portador es obligatorio y debe tener al menos 3 caracteres</small>
+      }
+    </div>
+
+    <div>
+      <label for="raza">Raza</label>
+      <p-select [options]="razas" formControlName="raza"></p-select>
+      @if (formulario.get('raza')?.invalid && formulario.get('raza')?.touched) {
+      <small>La raza es obligatoria y debe tener al menos 3 caracteres</small>
+      }
+
+      <!-- <label for="raza">Raza</label>
+      <input pInputText id="raza" type="text" formControlName="raza">
+      @if (formulario.get('raza')?.invalid && formulario.get('raza')?.touched) {
+      <small>La raza es obligatoria y debe tener al menos 3 caracteres</small>
+      } -->
+    </div>
+
+    <div>
+      <label for="poder">Poder</label>
+      <input pInputText id="poder" type="text" formControlName="poder">
+      @if (formulario.get('poder')?.invalid && formulario.get('poder')?.touched) {
+      <small>El poder es obligatorio y debe tener al menos 3 caracteres</small>
+      }
+    </div>
+
+    <div>
+      <label for="corrupcion">Corrupción</label>
+      <!-- tipo barra slide -->
+      <input type="number" pInputText formControlName="corrupcion" min="0" max="100" />
+      <!-- <p-slider formControlName="corrupcion" [min]="0" [max]="100" /> -->
+
+      @if (formulario.get('corrupcion')?.invalid && formulario.get('corrupcion')?.touched) {
+      <small>La corrupción es obligatoria y debe estar entre 0 y 100</small>
+      }
+
+    </div>
+
+    <!-- <div>
+         {
+      nombre: 'Anillo de Durin',
+      portador: 'Durin III',
+      raza: 'Enano',
+      poder: 'Riqueza y dominio de la piedra',
+      corrupcion: 35
+    },
+
+      -->
+
+    <p-button type="submit" [disabled]="formulario.invalid">
+      Guardar anillo
+    </p-button>
+    <p-button label="Limpiar" (onClick)="limpiar()">
+
+    </p-button>
+  </form>
+</div>

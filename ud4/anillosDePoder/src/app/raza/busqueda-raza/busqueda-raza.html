@@ -1,0 +1,77 @@
+<div class="barraBusqueda">
+  <div class="acciones">
+    <table>
+      <tr>
+        <td><button routerLink="/buscar-raza" id="buscarRaza">Buscar Raza</button></td>
+        <td><button routerLink="/crear-raza" id="crearRaza">Crear Raza</button>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+<div class="busqueda">
+  <input type="text" pInputText [(ngModel)]="campoBusqueda" />
+  <p-button label="Buscar Raza" icon="pi pi-check"  (onClick)="buscar()" severity="danger" />
+</div>
+
+<div>
+  <p-table [value]="razasFiltradas" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template #header>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Longevidad</th>
+        <th>Región Principal</th>
+        <th>Afinidad Mágica</th>
+      </tr>
+    </ng-template>
+    <ng-template let-raza #body>
+      <tr>
+        <td>{{ raza.nombre }}</td>
+        <td>{{ raza.descripcion }}</td>
+        <td>{{ raza.longevidad }}</td>
+        <td>{{ raza.regionPrincipal }}</td>
+        <td>{{ raza.afinidadMagica? "Si" : "No"}}</td>
+      </tr>
+    </ng-template>
+        <ng-template #emptymessage>
+      <tr>
+        <td colspan="5">No se encontraron razas</td>
+      </tr>
+    </ng-template>
+
+  
+  </p-table>
+
+
+
+
+  <!-- <table class="tabla">
+    <thead>
+      <tr>
+        <th>nombre</th>
+        <th>descripcion</th>
+        <th>longevidad</th>
+        <th>región principal</th>
+        <th>afinidad mágica</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (raza of razasFiltradas; track raza.nombre) {
+        <tr>
+          <td>{{ raza.nombre }}</td>
+          <td>{{ raza.descripcion }}</td>
+          <td>{{ raza.longevidad }}</td>
+          <td>{{ raza.regionPrincipal }}</td>
+          <td>{{ raza.afinidadMagica ? "Si" : "No" }}</td>
+        </tr>
+      }
+      @empty {
+        <tr>
+          <td colspan="5">No se encontraron razas</td>
+        </tr>
+      }
+    </tbody>
+  </table> -->
+</div>
