@@ -1,0 +1,41 @@
+<!-- @for (item of personajes; track item.id) {
+<li>{{ item.nombre }}</li>
+} @empty {
+<li>no hay</li>
+} -->
+<div class="aniadir-container">
+    <button pButton (click)="aniadir()">
+        <i class="pi pi-check" pButtonIcon ></i>
+        <span pButtonLabel>Crear Personaje</span>
+    </button>
+</div>
+
+<div>
+    <table class="tabla">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Raza</th>
+                <th>Fecha Nacimiento</th>
+                <th>Nivel corrupción</th>
+                <th>Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of personajes; track item.id) {
+            <tr>
+                <td>{{ item.nombre }}</td>
+                <td>{{ item.raza }}</td>
+                <td>{{ item.fechaNacimiento }}</td>
+                <td>{{ item.nivelCorrupcion }}</td>
+                <td><input type="button" value="Editar" id="btn-editar" (click)="editar(item.id)"></td>
+            </tr>
+            }
+            @empty {
+            <tr>
+                <td colspan="5">No se encontraron razas</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

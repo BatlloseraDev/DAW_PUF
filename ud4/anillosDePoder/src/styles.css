@@ -99,3 +99,9 @@ tbody {
 tr {
   border: green 5px solid;
 }
+
+.aniadir-container{
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
