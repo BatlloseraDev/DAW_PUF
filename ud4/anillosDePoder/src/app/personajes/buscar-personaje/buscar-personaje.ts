@@ -2,10 +2,13 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { PersonajeService } from '../../servicios/personaje-service';
 import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
+import { FormsModule } from '@angular/forms';
+import { TableModule } from 'primeng/table';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-buscar-personaje',
-  imports: [ ButtonModule],
+  imports: [ ButtonModule, FormsModule, TableModule, RouterLink],
   templateUrl: './buscar-personaje.html',
   styleUrl: './buscar-personaje.css',
 })

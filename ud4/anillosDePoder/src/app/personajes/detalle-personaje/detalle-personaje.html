@@ -1,3 +1,16 @@
+<div class="barraBusqueda">
+  <div class="acciones">
+    <table>
+      <tr>
+        <td><button routerLink="/personajes" id="personajes">Buscar Personaje</button></td>
+        <td><button routerLink="/crear-personaje" id="crear-personaje">Crear Personaje</button></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+
 <div class="formulario">
     <form [formGroup]="formulario" (ngSubmit)="enviar()">
 
@@ -10,7 +23,8 @@
         </div>
         <div>
             <label>Raza</label>
-            <input pInputText type="text" formControlName="raza">
+            <p-select [options]="razas" formControlName="raza"></p-select>
+            <!-- <input pInputText type="text" formControlName="raza"> -->
             @if (formulario.get('raza')?.invalid && formulario.get('raza')?.touched) {
                 <small>La raza es obligatoria</small>
             }
@@ -29,8 +43,13 @@
                 <small>El nivel de corrupción es obligatorio</small>
             }
         </div>
+
         <p-button type="submit" [disabled]="formulario.invalid">
-            Guardar raza
+            @if (modify) {
+                Guardar personaje
+            } @else {
+                Crear personaje
+            }
         </p-button>
         <p-button label="Limpiar" (onClick)="limpiar()"></p-button>
 

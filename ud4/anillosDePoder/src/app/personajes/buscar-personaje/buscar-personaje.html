@@ -3,15 +3,60 @@
 } @empty {
 <li>no hay</li>
 } -->
-<div class="aniadir-container">
+<div class="barraBusqueda">
+  <div class="acciones">
+    <table>
+      <tr>
+        <td><button routerLink="/personajes" id="personajes">Buscar Personaje</button></td>
+        <td><button routerLink="/crear-personaje" id="crear-personaje">Crear Personaje</button></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+
+
+<!-- <div class="aniadir-container">
     <button pButton (click)="aniadir()">
         <i class="pi pi-check" pButtonIcon ></i>
         <span pButtonLabel>Crear Personaje</span>
     </button>
-</div>
+</div> -->
 
 <div>
-    <table class="tabla">
+    <p-table [value]="personajes" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template #header>
+            <tr>
+                <th>Nombre</th>
+                <th>Raza</th>
+                <th>Fecha Nacimiento</th>
+                <th>Nivel Corrupción</th>
+                <th>Editar</th>
+            </tr>
+
+        </ng-template>
+        <ng-template let-personaje #body>
+            <tr>
+                <td>{{ personaje.nombre }}</td>
+                <td>{{ personaje.raza }}</td>
+                <td>{{ personaje.fechaNacimiento }}</td>
+                <td>{{ personaje.nivelCorrupcion }}</td>
+                <td><button (click)="editar(personaje.id)">Editar</button><td>
+            </tr>
+        </ng-template>
+        <ng-template #emptymessage>
+            <tr>
+                <td colspan="5">No se encontraron personajes</td>
+            </tr>
+        </ng-template>
+
+    </p-table>
+</div>
+
+<!-- 
+
+ <p-table class="tabla">
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -37,5 +82,6 @@
             </tr>
             }
         </tbody>
-    </table>
-</div>
+    </p-table>
+
+-->

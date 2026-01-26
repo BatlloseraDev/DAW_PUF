@@ -66,6 +66,11 @@
   width: 100%;
 }
 
+.formulario *{
+ 
+  margin: 5px;
+}
+
 .busqueda {
     padding-top: 10px;
     display: flex;

@@ -3,10 +3,12 @@ import { PersonajeService } from '../../servicios/personaje-service';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
+import { SelectModule } from 'primeng/select';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-detalle-personaje',
-  imports: [ReactiveFormsModule, ButtonModule],
+  imports: [ReactiveFormsModule, ButtonModule, SelectModule, RouterLink],
   templateUrl: './detalle-personaje.html',
   styleUrl: './detalle-personaje.css',
 })
@@ -15,6 +17,8 @@ export class DetallePersonaje implements OnInit {
   constructor(private personaService: PersonajeService, private route: ActivatedRoute, private cdr: ChangeDetectorRef) {
 
   }
+  razas = ['HUMANO', 'ELFO', 'ENANO', 'ORCO', 'MAIAR', 'OSCURO']
+  modify = false
 
   formulario: FormGroup = new FormGroup({
     nombre: new FormControl('', [
@@ -42,6 +46,7 @@ export class DetallePersonaje implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if(id){
       this.cargarPersonaje(parseInt(id));
+      this.modify = true;
     }
     // this.route.paramMap.subscribe(params => {
     //   const id = params.get('id');
@@ -69,7 +74,30 @@ export class DetallePersonaje implements OnInit {
   }
 
   enviar() {
+    if(this.modify){
 
+      const id = this.route.snapshot.paramMap.get('id');
+      if(id){
+        this.personaService.modificarPersonaje(parseInt(id), this.formulario.value).subscribe({
+          next: (data) => {
+            console.log(data);
+          },
+          error: (err) => {
+            console.log(err);
+          }
+        })
+      }
+    
+    }else{
+      this.personaService.crearPersonaje(this.formulario.value).subscribe({
+        next: (data) => {
+          console.log(data);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      })
+    }
   }
 
   limpiar() {

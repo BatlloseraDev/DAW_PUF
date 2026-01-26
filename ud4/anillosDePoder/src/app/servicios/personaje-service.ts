@@ -21,4 +21,12 @@ export class PersonajeService {
     // this.http.get(`${this.baseUrl}all`);
     return this.http.get<any>(`${this.baseUrl}obtenerPersonaje/${id}`);
   }
+  crearPersonaje(personaje: any):Observable<any>  {
+    
+    return this.http.post<any>(`${this.baseUrl}insertarPersonaje`, personaje);
+  }
+  modificarPersonaje(id: number, personaje: any):Observable<any>  {
+    
+    return this.http.put<any>(`${this.baseUrl}actualizarPersonaje/${id}`, personaje);
+  }
 }
