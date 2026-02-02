@@ -131,7 +131,8 @@ export class BuscarPersonaje implements OnInit {
   eliminar(id: number){
     this.personajeService.eliminarPersonaje(id).subscribe({
       next: (data) => {
-        this.cargarPersonajes();
+        // this.cargarPersonajes();
+        this.personajes = this.personajes.filter(p => p.id !== id); //borrado sin recargado
         console.log(data);
       },
       error: (err) => {
