@@ -7,6 +7,7 @@ import { FormularioRaza } from './raza/formulario-raza/formulario-raza';
 import { FormularioAnillo } from './anillo/formulario-anillo/formulario-anillo';
 import { BuscarPersonaje } from './personajes/buscar-personaje/buscar-personaje';
 import { DetallePersonaje } from './personajes/detalle-personaje/detalle-personaje';
+import { Padre } from './modales/padre/padre';
 
 
 export const routes: Routes = [
@@ -19,4 +20,5 @@ export const routes: Routes = [
     { path: 'personajes', component: BuscarPersonaje },
     { path: 'editar/:id', component: DetallePersonaje },
     { path: 'crear-personaje', component: DetallePersonaje },
+    { path: 'padre', component:Padre}
 ];

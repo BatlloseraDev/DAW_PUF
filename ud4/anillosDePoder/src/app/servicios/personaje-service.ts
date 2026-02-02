@@ -29,4 +29,22 @@ export class PersonajeService {
     
     return this.http.put<any>(`${this.baseUrl}actualizarPersonaje/${id}`, personaje);
   }
+
+  softDeletePersonaje(id: number):Observable<any>  {
+    
+    return this.http.put<any>(`${this.baseUrl}bajaLogica/${id}`, {});
+  }
+
+  reactivarPersonaje(id: number):Observable<any>  {
+    
+    return this.http.put<any>(`${this.baseUrl}reactivar/${id}`, {});
+  }
+
+  eliminarPersonaje(id: number):Observable<any>  {
+    
+    return this.http.delete<any>(`${this.baseUrl}bajaFisica/${id}`);
+  }
+
+
+
 }
