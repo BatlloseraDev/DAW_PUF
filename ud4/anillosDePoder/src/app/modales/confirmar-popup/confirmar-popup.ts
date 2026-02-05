@@ -15,7 +15,7 @@ import { ConfiguracionPopup } from '../../interfaces/configuracion-popup';
 })
 export class ConfirmarPopup {
 
-  @Input() config!:ConfiguracionPopup; 
+  @Input() config!: ConfiguracionPopup;
 
   private confirmationService = inject(ConfirmationService);
   private messageService = inject(MessageService);
@@ -26,19 +26,28 @@ export class ConfirmarPopup {
       message: this.config.message,
       header: this.config.header,
       icon: 'pi pi-info-circle',
+      acceptLabel: this.config.acceptLabel,
+      rejectLabel: this.config.rejectLabel,
+      // cambiar el texto que aparece
       rejectButtonProps: {
-        label: 'Cancel',
         severity: 'secondary',
         outlined: true,
-        
+
+
       },
       acceptButtonProps: {
-        label: 'Delete',
         severity: 'danger'
       },
       accept: () => {
-        this.config.funcion();
-        this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'Record deleted', life: 3000 });
+        // ejecutar la función
+        const result = this.config.funcion(this.messageService);
+        console.log("El resultado es: " + result);
+
+        // if (result == true) {
+        //   this.messageService.add({ severity: 'error', summary: 'Cancelado', detail: 'No se puede eliminar, es portador', life: 3000 });
+        // } else {
+        //   this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'Record deleted', life: 3000 });
+        // }
       },
       reject: () => {
         this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });

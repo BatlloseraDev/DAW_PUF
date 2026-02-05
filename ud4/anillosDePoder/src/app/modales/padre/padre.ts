@@ -17,6 +17,8 @@ export class Padre {
     header : "Personaje",
     nameButton: "Borrar",
     severity: 'danger',
+    acceptLabel: 'Aceptar',
+    rejectLabel: 'Cancelar',
     funcion: ()=> {}
   }
 }

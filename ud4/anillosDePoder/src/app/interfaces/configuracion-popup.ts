@@ -5,7 +5,9 @@ export interface ConfiguracionPopup {
     header?: string;
     nameButton: string;
     severity: ButtonSeverity;
+    acceptLabel : string;
+    rejectLabel : string;
     // pasar una función para ejecutar
-    funcion: () => void;
+    funcion: (messageService?: any) => void | Boolean;
 
 }

@@ -25,13 +25,25 @@
 </div> -->
 
 <div style="display: flex; justify-content: center; width: 100%;">
-    <p-table [value]="personajes" [paginator]="true" [rows]="5" [style]="{ 'width': '75%' }" [tableStyle]="{ 'width': '100%' }" [rowsPerPageOptions]="[5, 10, 20]">
+    <p-table [value]="personajes" [paginator]="true" [rows]="5" [style]="{ 'width': '75%' }" [tableStyle]="{ 'width': '100%' }" [rowsPerPageOptions]="[5, 10, 20]" sortMode="multiple">
         <ng-template #header>
             <tr>
-                <th>Nombre</th>
-                <th>Raza</th>
-                <th>Fecha Nacimiento</th>
-                <th>Nivel Corrupción</th>
+                <th pSortableColumn="nombre">
+                    Nombre
+                    <p-sortIcon field="nombre"/>
+                </th>
+                <th pSortableColumn="raza">
+                    Raza
+                    <p-sortIcon field="raza"/>
+                </th>
+                <th pSortableColumn="fechaNacimiento">
+                    Fecha Nacimiento
+                    <p-sortIcon field="fechaNacimiento"/>
+                </th>
+                <th pSortableColumn="nivelCorrupcion">
+                    Nivel Corrupción
+                    <p-sortIcon field="nivelCorrupcion"/>
+                </th>
                 <th>Editar</th>
                 <th>Eliminado Lógico</th>
                 <th>Eliminado Físico</th>

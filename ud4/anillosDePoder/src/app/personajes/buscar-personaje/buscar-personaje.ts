@@ -25,6 +25,8 @@ export class BuscarPersonaje implements OnInit {
       header: "Borrado",
       nameButton: `<img src="https://github.com/user-attachments/assets/bbba141b-bebe-40ab-878d-081a4ccfe122" width="25">`,
       severity: 'danger',
+      acceptLabel: 'Desactivar',
+      rejectLabel: 'Cancelar',
       funcion: () => {
         console.log("Borrado lógico de: " + id);
         this.softDelete(id)
@@ -38,6 +40,8 @@ export class BuscarPersonaje implements OnInit {
       header: "Reactivar",
       nameButton: `<img src="https://github.com/user-attachments/assets/a9799ece-ed21-419c-bca2-068f20dd8a91" width="25">`,
       severity: 'success',
+      acceptLabel: 'Reactivar',
+      rejectLabel: 'Cancelar',
       funcion: () => {
         console.log("Reactivar de: " + id);
         this.reactivar(id)
@@ -51,9 +55,14 @@ export class BuscarPersonaje implements OnInit {
       header: "Borrado Definitivo",
       nameButton: `<img src="https://github.com/user-attachments/assets/c7f978b2-4c39-4d55-ba14-50a2656ee7d7" width="25">`,
       severity: 'danger',
-      funcion: () => {
+      acceptLabel: 'Eliminar',
+      rejectLabel: 'Cancelar',
+      funcion: (messageService: any) => {
         console.log("Borrado definitivo de: " + id);
-        this.eliminar(id)
+        const result = this.eliminar(id, messageService);
+
+        console.log("Datos de ejecutar la funcion: "+ result)
+        return result;
       }
     };
   }
@@ -74,7 +83,7 @@ export class BuscarPersonaje implements OnInit {
 
 
   personajes: any[] = [];
-  error = ''
+  error: any= ''
 
   ngOnInit(): void {
 
@@ -128,18 +137,22 @@ export class BuscarPersonaje implements OnInit {
     })
   }
 
-  eliminar(id: number){
+  eliminar(id: number, messageService: any){
     this.personajeService.eliminarPersonaje(id).subscribe({
       next: (data) => {
         // this.cargarPersonajes();
         this.personajes = this.personajes.filter(p => p.id !== id); //borrado sin recargado
         console.log(data);
+        messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'Record deleted', life: 3000 });
       },
       error: (err) => {
         this.error = err;
         console.log(err);
+        messageService.add({ severity: 'error', summary: 'Cancelado', detail: 'No se puede eliminar, es portador', life: 3000 });
+       
       }
     })
+    return this.error.status == 500;
   }
 
 }
