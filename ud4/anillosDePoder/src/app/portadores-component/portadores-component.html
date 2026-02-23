@@ -1,0 +1,79 @@
+<!-- <table>
+    <tr>
+        <td>
+            <label>Nombre del portador</label>
+        </td>
+        <td>
+            <input type="text" [(ngModel)]="nombrePortador" name="nombre" value=""/>
+        </td>
+        <td>
+            <label>Nombre del anillo</label>
+        </td>
+        <td>
+            <input type="text" [(ngModel)]="nombreAnillo" name="nombre" value=""/>
+        </td>
+    </tr>
+    <tr>
+        <td><label>Nivel de corrupción:</label></td>
+        <td><input type="number" [(ngModel)]="nivel" value=0></td>
+        <td><label>Raza:</label></td>
+        <td><input type="text" [(ngModel)]="raza" value=""></td>
+    </tr>
+</table> -->
+
+<div class="botonera">
+    <input type="button" value="Guardar datos" (click)="guardarDatos()">
+    <input type="button" value="Limpiar datos">
+</div>
+
+<div style="display: flex; justify-content: center; width: 100%;">
+    <p-table [value]="portadores" [paginator]="true" [rows]="5" [style]="{ 'width': '75%' }"
+        [tableStyle]="{ 'width': '100%' }" [rowsPerPageOptions]="[5, 10, 20]" sortMode="multiple">
+        <ng-template #header>
+            <tr>
+                <th pSortableColumn="nombre">
+                    Nombre
+                    <p-sortIcon field="nombre" />
+                </th>
+                <th pSortableColumn="Anillo">
+                    Anillo
+                    <p-sortIcon field="Anillo" />
+                </th>
+                <th pSortableColumn="Poder">
+                    Poder
+                    <p-sortIcon field="Poder" />
+                </th>
+                <th pSortableColumn="Inicio">
+                    Inicio
+                    <p-sortIcon field="Inicio" />
+                </th>
+                <th pSortableColumn="Fin">
+                    Fin
+                    <p-sortIcon field="Fin" />
+                </th>
+                <th pSortableColumn="Activo">>
+                    Activo
+                    <p-sortIcon field="Activo" />
+                </th>
+            </tr>
+
+        </ng-template>
+        <ng-template let-portadores #body>
+            <tr>
+                <td>{{ portadores.personaje.nombre }} ({{ portadores.personaje.raza }})</td>
+                <td>{{ portadores.anillo.nombre }}</td>
+                <td>{{ portadores.anillo.poder }}</td>
+                <td>{{ portadores.fechaInicio}}</td>
+                <td>{{ portadores.fechaFin}}</td>
+                <td>{{ portadores.activo }}</td>
+
+            </tr>
+        </ng-template>
+        <ng-template #emptymessage>
+            <tr>
+                <td colspan="7">No se encontraron personajes</td>
+            </tr>
+        </ng-template>
+
+    </p-table>
+</div>

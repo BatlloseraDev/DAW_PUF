@@ -110,3 +110,18 @@ tr {
   justify-content: center;
   align-items: center
 }
+
+.fondo{
+  background-image: url("./assets/img/fondo.png");
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center
+}
+
+.contenido-partida{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}

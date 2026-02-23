@@ -1,0 +1,70 @@
+<div class="barraBusqueda">
+  <div class="acciones">
+    <table>
+      <tr>
+        <td><button routerLink="/jugar" id="jugar">Jugar</button></td>
+        <td><button routerLink="/estadisticas" id="estadisiticas">Estadisticas</button></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- Añadir fondo a traves de img src -->
+<div class="fondo">
+  <div class="contenido-partida">
+
+    @if (nuevaPartida) {
+    <p-card header="¡Bienvenido al Trivial!" [style]="{ width: '400px', 'text-align': 'center' }">
+      <p class="m-0 mb-4">
+        ¿Estás listo para demostrar tus conocimientos? Haz clic en el botón para comenzar.
+      </p>
+      <p-button label="Empezar Partida" icon="pi pi-play" (onClick)="empezarPartida()"></p-button>
+    </p-card>
+    }
+
+    @else if (partidaActual && !partidaActual.acabada && pregunta) {
+    <p-card header="Pregunta" [style]="{ width: '600px', 'max-width': '90vw' }">
+
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <h2 style="font-size: 1.5rem;">{{ pregunta.pregunta }}</h2>
+      </div>
+
+      <div style="display: flex; gap: 1rem; justify-content: space-around;">
+        <p-button [label]="pregunta.respuesta1" styleClass="p-button-outlined"
+          (onClick)="comprobarRespuesta(1)"></p-button>
+        <p-button [label]="pregunta.respuesta2" styleClass="p-button-outlined"
+          (onClick)="comprobarRespuesta(2)"></p-button>
+        <p-button [label]="pregunta.respuesta3" styleClass="p-button-outlined"
+          (onClick)="comprobarRespuesta(3)"></p-button>
+        <p-button [label]="pregunta.respuesta4" styleClass="p-button-outlined"
+          (onClick)="comprobarRespuesta(4)"></p-button>
+      </div>
+    </p-card>
+    }
+
+    @else if (partidaActual && partidaActual.acabada) {
+    <p-card header="Fin de la Partida" [style]="{ width: '400px', 'text-align': 'center' }">
+
+      @if (!partidaActual.perdida) {
+      <div style="color: green; margin-bottom: 1.5rem;">
+        <h2 style="margin:0;">¡Enhorabuena! 🏆</h2>
+        <p>Has superado la prueba.</p>
+      </div>
+      } @else {
+      <div style="color: red; margin-bottom: 1.5rem;">
+        <h2 style="margin:0;">¡Vaya, has perdido! 😢</h2>
+        <p>Sigue practicando e inténtalo de nuevo.</p>
+      </div>
+      }
+
+      @if (partidaActual.numeroCorrectas !== undefined) {
+      <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+        Aciertos: <strong>{{ partidaActual.numeroCorrectas }}</strong>
+      </p>
+      }
+
+      <p-button label="Jugar otra vez" icon="pi pi-refresh" (onClick)="empezarPartida()"></p-button>
+    </p-card>
+    }
+  </div>
+</div>

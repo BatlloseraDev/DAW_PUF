@@ -8,6 +8,9 @@ import { FormularioAnillo } from './anillo/formulario-anillo/formulario-anillo';
 import { BuscarPersonaje } from './personajes/buscar-personaje/buscar-personaje';
 import { DetallePersonaje } from './personajes/detalle-personaje/detalle-personaje';
 import { Padre } from './modales/padre/padre';
+import { JugarPartida } from './partida/jugar-partida/jugar-partida';
+import { Estadisticas } from './partida/estadisticas/estadisticas';
+import { PortadoresComponent } from './portadores-component/portadores-component';
 
 
 export const routes: Routes = [
@@ -20,5 +23,8 @@ export const routes: Routes = [
     { path: 'personajes', component: BuscarPersonaje },
     { path: 'editar/:id', component: DetallePersonaje },
     { path: 'crear-personaje', component: DetallePersonaje },
-    { path: 'padre', component:Padre}
+    { path: 'padre', component:Padre},
+    { path: 'jugar', component:JugarPartida},
+    { path: 'estadisticas', component:Estadisticas},
+    { path: 'portadores', component:PortadoresComponent}
 ];
