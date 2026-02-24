@@ -8,4 +8,39 @@
     </table>
   </div>
 </div>
+<div class="fondo">
+  <div class="contenido-estadisticas">
+    <p-card class="panel-estadisticas">
+      <div class="titulo-principal">
+        <p-divider align="center">
+          <span class="texto-titulo">Estadísticas</span>
+        </p-divider>
+      </div>
 
+      <div class="grid-estadisticas">
+        <div class="columna-stat">
+          <div class="subtitulo">
+            <p-divider align="center">Victorias</p-divider>
+          </div>
+          <i class="pi pi-trophy icono-oro"></i>
+      
+          <span class="valor-stat texto-oro">{{ ganadas }}</span>
+        </div>
+
+        <div class="columna-stat columna-centro">
+          <span class="subtitulo-plano">Total Partidas Jugadas</span>
+          <span class="valor-stat texto-oro total-grande">{{ total }}</span>
+          <p-divider></p-divider>
+        </div>
+
+        <div class="columna-stat">
+          <div class="subtitulo">
+            <p-divider align="center">Derrotas</p-divider>
+          </div>
+          <i class="pi pi-shield icono-rojo"></i> 
+          <span class="valor-stat texto-rojo">{{ perdidas }}</span>
+        </div>
+      </div>
+    </p-card>
+  </div>
+</div>

@@ -143,7 +143,7 @@ export class JugarPartida implements OnInit {
       next: (respuestaBackend) => {
 
         preguntaActual.respuesta = respuestaUsuario;
-
+         if (this.partidaActual)this.partidaActual.numeroCorrectas = respuestaBackend.numeroCorrectas;
         this.partidaActual!.acabada = respuestaBackend.finPartida;
 
         this.guardarPartidaEnLocalStorage();
@@ -154,12 +154,12 @@ export class JugarPartida implements OnInit {
           // this.partidaActual!.numeroCorrectas = respuestaBackend.numeroCorrectas;
           this.finalizarPartida();
         } else {
-          if (this.partidaActual)this.partidaActual.numeroCorrectas = respuestaBackend.numeroCorrectas;
+         
           this.cargarPregunta();
+           this.cdr.detectChanges();
         }
         this.guardarPartidaEnLocalStorage();
         this.cdr.detectChanges();
-
       },
       error: (err) => {
         console.log('Error al comprobar la respuesta:', err);

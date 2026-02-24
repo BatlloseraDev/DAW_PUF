@@ -1,0 +1,106 @@
+/* Centrado del panel en la pantalla */
+.contenido-estadisticas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+  min-height: 80vh;
+}
+
+/* Modificando la tarjeta de PrimeNG */
+::ng-deep .panel-estadisticas.p-card {
+  background: #251e1a; /* Marrón muy oscuro */
+  border: 2px solid #4a3b2c;
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+  width: 100%;
+  max-width: 900px;
+  padding: 1rem;
+}
+
+/* Estilos de Tipografía y Layout */
+.titulo-principal .texto-titulo {
+  font-family: 'Georgia', serif;
+  font-size: 2rem;
+  color: #d8c3a5;
+  letter-spacing: 2px;
+}
+
+.grid-estadisticas {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  margin-top: 1rem;
+}
+
+.columna-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+}
+
+.columna-centro {
+  border-left: 2px solid #4a3b2c;
+  border-right: 2px solid #4a3b2c;
+}
+
+.subtitulo {
+  width: 100%;
+  font-family: 'Georgia', serif;
+  color: #bcaaa4;
+  font-size: 1.1rem;
+}
+
+.subtitulo-plano {
+  font-family: 'Georgia', serif;
+  color: #bcaaa4;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+/* Iconos y Valores */
+.icono-oro {
+  font-size: 3.5rem;
+  color: #d4af37; /* Dorado */
+  margin: 1.5rem 0;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+}
+
+.icono-rojo {
+  font-size: 3.5rem;
+  color: #c06050; /* Rojo apagado */
+  margin: 1.5rem 0;
+  text-shadow: 0 0 10px rgba(192, 96, 80, 0.4);
+}
+
+.valor-stat {
+  font-family: 'Georgia', serif;
+  font-size: 3rem;
+  margin-top: 0.5rem;
+}
+
+.texto-oro {
+  color: #d4af37;
+}
+
+.texto-rojo {
+  color: #e57373;
+}
+
+.total-grande {
+  font-size: 4rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+/* Modificar los divisores de PrimeNG para que parezcan líneas doradas */
+::ng-deep .p-divider.p-divider-horizontal:before {
+  border-top: 1px solid #6d543e !important;
+}
+::ng-deep .p-divider .p-divider-content {
+     background: #251e1a !important;
+}
